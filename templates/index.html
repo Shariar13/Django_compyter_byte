@@ -1,0 +1,74 @@
+{% extends 'main.html' %}
+{% block content %}
+<!-- card -->
+{% for message in messages %}
+
+
+<div class="alert {{ message.tags }} alert-dismissible fade show" role="alert">
+  <strong></strong>{{ message }}
+  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+
+{% endfor %}
+<div class="card">
+  <div class="card-header">
+  </div>
+  <div class="card-body">
+    <blockquote class="blockquote mb-0">
+      <h1 style="margin-top: 93px;">I <i class="fas fa-heart"></i> Web Developing</h1>
+      <br>
+      <p style="font-size: 19px;">Websites promote you 24/7: No employee will do that.Don't be late.<br>Start your new
+        journey.Make your own website.</p>
+
+    </blockquote>
+  </div>
+</div>
+
+<div class="card-group">
+  <div class="card">
+    <div style="text-align: left;" class="card-body">
+      <h5 class="card-title">Front-end</h5>
+      <p class="card-text">Order your website front-end design.<br><br>Category : one page design,landing page
+        design,multiple page design.<br><br>
+        Language : html/css/bootstrap/javaScript<br><br>
+        PSD to HTML</p>
+      <p>Starting 1000 TAKA.</p>
+      <br>
+      <br>
+      Click here for order <button style="border-radius: 5px;"><a style="text-decoration: none;color: black;"
+          href="{% url 'front_end' %}">Click here</a></button>
+    </div>
+  </div>
+  <div class="card">
+    <div style="text-align: left;" class="card-body">
+      <h5 class="card-title">Back-end</h5>
+      <p class="card-text">Order your website back-end.<br><br>For this service you have to give<br>us front-end
+        design.<br><br>
+        We will create the back-end of your front-end design.<br><br>
+        Django/Laravel</p>
+      <p>Starting 2000 TAKA.</p>
+      <br>
+      <br>
+      Click here for order <button style="border-radius: 5px;"><a style="text-decoration: none;color: black;"
+          href="{% url 'back_end' %}">Click here</a></button>
+    </div>
+  </div>
+  <div class="card">
+    <div style="text-align: left;" class="card-body">
+      <h5 class="card-title">Full Stack</h5>
+      <p class="card-text">Order your full stack website.<br><br>For this service you have to give<br>us only the
+        details of your website.<br><br>
+        We will create your full stack website.<br><br>
+        Full Stack is the best choice.</p>
+      <p>Starting 2500 TAKA.</p>
+      <br>
+      <br>
+      Click here for order <button style="border-radius: 5px;"><a style="text-decoration: none;color: black;"
+          href="{% url 'fullstack' %}">Click here</a></button>
+    </div>
+  </div>
+</div>
+
+<!-- card -->
+
+{% endblock %}

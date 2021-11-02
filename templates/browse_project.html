@@ -1,0 +1,132 @@
+{% extends 'main.html' %}
+{% block content %}
+
+<style>
+    .card {
+        text-align: left;
+        width: 72%;
+        height: auto;
+        margin: auto;
+    }
+
+    .card-body {
+        background-color: white;
+        color: black;
+    }
+
+    .order_details {
+        font-size: 15px;
+    }
+</style>
+<div style="text-align: center;">
+    <h1>Your Order</h1>
+    <hr>
+    <h5>FrontEnd</h5>
+</div>
+
+{% for front_order in object_list %}
+{% if front_order.username == user.username %}
+
+
+<div class="card">
+    <div class="card-header">
+
+
+
+
+
+        Order ID : {{ front_order.pk }}
+        <span style="float: right;">{{ front_order.date }}</span>
+    </div>
+    <div class="card-body">
+        <blockquote class="blockquote mb-0">
+            <p class="order_details">Type : {{ front_order.category }}</p>
+            <p class="order_details">Page Quantity : {{ front_order.quantity }}</p>
+            <p class="order_details">Order Details : {{ front_order.details }}</p>
+            <p class="order_details">Order by : {{ front_order.name }}</p>
+            {% if front_order.status == Confirmed %}
+            <p class="order_details">Status : <span style="color: green;" >{{ front_order.status }}</span></p>
+            {% else %}
+            <p class="order_details">Status : <span style="color: red;" >{{ front_order.status }}</span></p>              
+            {% endif %}
+        </blockquote>
+    </div>
+</div>
+{% endif %}
+{% endfor %}
+
+<div style="text-align: center;">
+    <hr>
+    <h5>BackEnd</h5>
+</div>
+{% for back_order in back_order_database %}
+{% if back_order.username == user.username %}
+
+
+<div class="card">
+    <div class="card-header">
+
+
+
+
+
+        Order ID : {{ back_order.pk }}
+        <span style="float: right;">{{ back_order.date }}</span>
+    </div>
+    <div class="card-body">
+        <blockquote class="blockquote mb-0">
+            <p class="order_details">Type : {{ back_order.category }}</p>
+            <p class="order_details">Page Quantity : {{ back_order.quantity }}</p>
+            <p class="order_details">Order Details : {{ back_order.details }}</p>
+            <p class="order_details">Order by : {{ back_order.name }}</p>
+            {% if back_order.status == Confirmed %}
+            <p class="order_details">Status : <span style="color: green;" >{{ back_order.status }}</span></p>
+            {% else %}
+            <p class="order_details">Status : <span style="color: red;" >{{ back_order.status }}</span></p>              
+            {% endif %}
+        </blockquote>
+    </div>
+</div>
+{% endif %}
+{% endfor %}
+
+<div style="text-align: center;">
+    <hr>
+    <h5>FullStack</h5>
+</div>
+{% for fullstack_order in fullstack_order_database %}
+{% if fullstack_order.username == user.username %}
+
+
+<div class="card">
+    <div class="card-header">
+
+
+
+
+
+        Order ID : {{ fullstack_order.pk }}
+        <span style="float: right;">{{ fullstack_order.date }}</span>
+    </div>
+    <div class="card-body">
+        <blockquote class="blockquote mb-0">
+            <p class="order_details">Type : {{ fullstack_order.category }}</p>
+            <p class="order_details">Page Quantity : {{ fullstack_order.quantity }}</p>
+            <p class="order_details">Order Details : {{ fullstack_order.details }}</p>
+            <p class="order_details">Order by : {{ fullstack_order.name }}</p>
+            
+            {% if fullstack_order.status == "Confirmed" %}
+            <p class="order_details">Status : <span style="color: green;" >{{ fullstack_order.status }}</span></p>
+            {% else %}
+            <p class="order_details">Status : <span style="color: red;" >{{ fullstack_order.status }}</span></p>              
+            {% endif %}
+                
+            
+        </blockquote>
+    </div>
+</div>
+{% endif %}
+{% endfor %}
+<hr>
+
+{% endblock %}

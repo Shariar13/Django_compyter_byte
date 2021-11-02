@@ -1,0 +1,78 @@
+{% extends 'main.html' %}
+{% block content %}
+<!-- card -->
+<style>
+    .form {
+        margin-top: 19px;
+    }
+
+    .form_details {
+        margin-top: 19px;
+        height: 93px;
+    }
+</style>
+<div class="card">
+    <div class="card-header">
+    </div>
+    <div class="card-body">
+        <blockquote class="blockquote mb-0">
+            <h1 style="margin-top: 29px;">Place your order Now (Fullstack)</h1>
+            <br>
+            <div>
+                <form action="{% url 'fullstack_form' %}" method="POST">
+                    {% csrf_token %}
+                    {% for message in messages %}
+
+
+                    <div class="alert {{ message.tags }} alert-dismissible fade show" role="alert">
+                        <strong>Hey !</strong>{{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+
+                    {% endfor %}
+                    <label for="cars">Category : </label>
+                    <select name="category">
+                        <option value="Single Page">Single Page</option>
+                        <option value="Landing Page">Landing Page</option>
+                        <option value="Multiple Page">Multiple Page</option>
+                        <option value="Others">Others</option>
+                    </select>
+                    <input class="form" name="username" value="{{ user.username }}" type="hidden">
+                    <br>
+
+                    <input class="form" name="name" placeholder="Your Name" required>
+                    <br>
+                    <input class="form" name="phone" placeholder="Your Phone" required>
+                    <br>
+                    <input class="form" name="email" type="email" placeholder="Your Email" required>
+                    <br>
+                    <input class="form" name="address" placeholder="Your Address" required>
+                    <br>
+                    <input class="form" name="quantity" placeholder="Page Quantity" required>
+                    <br>
+                    <input class="form_details" name="details" placeholder="Details" required>
+                    <input class="form_details" name="status" value="Pending" type="hidden">
+                    <br>
+                    <br>
+                    {% if user.is_authenticated %}
+                    <input type="submit" value="Submit">
+                    {% else %}
+
+                    <li class="nav-item">
+                        <a style="color: white;" data-bs-toggle="modal" data-bs-target="#staticBackdrop"
+                            class="nav-link" href="">You have to login first <b>Click Here</b></a>
+                    </li>
+
+                    {% endif %}
+                </form>
+            </div>
+
+        </blockquote>
+    </div>
+</div>
+
+
+
+<!-- card -->
+
+{% endblock %}
